@@ -1,4 +1,4 @@
-import { formatCurrency } from "../scripts/utills/money.js";
+import { formatCurrency } from "../../scripts/utills/money.js";
 
 describe("test suite: format currency", () => {
   it("converts cents into dollers", () => {
