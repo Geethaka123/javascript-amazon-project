@@ -5,24 +5,41 @@ import { loadCart } from "../data/cart.js";
 // import "../data/car.js";
 // import "../data/cart-class.js";
 
-//let us run multiple promises at the same time
-Promise.all([
-  //   new Promise((resolve) => {
-  //     loadProducts(() => {
-  //       resolve("value1"); //go to next step
-  //     });
-  //   }),
-  loadProductsFetch(),
-  new Promise((resolve) => {
+//async return a promise
+async function loadPage() {
+  await loadProductsFetch();
+
+  const value = await new Promise((resolve) => {
     loadCart(() => {
-      resolve();
+      resolve("value4");
     });
-  }),
-]).then((values) => {
-  console.log(values);
+  });
+
+  console.log(value);
+
   renderOrderSummary();
   renderPaymentSummary();
-});
+}
+loadPage();
+
+//let us run multiple promises at the same time
+// Promise.all([
+//   //   new Promise((resolve) => {
+//   //     loadProducts(() => {
+//   //       resolve("value1"); //go to next step
+//   //     });
+//   //   }),
+//   loadProductsFetch(),
+//   new Promise((resolve) => {
+//     loadCart(() => {
+//       resolve();
+//     });
+//   }),
+// ]).then((values) => {
+//   console.log(values);
+//   renderOrderSummary();
+//   renderPaymentSummary();
+// });
 
 // new Promise((resolve) => {
 //   loadProducts(() => {
